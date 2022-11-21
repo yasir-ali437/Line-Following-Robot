@@ -1,0 +1,210 @@
+
+void SystemInit(){
+}
+void Timer1A_Init ( void )  //PF2
+{
+	
+#define TM_BASE 0x40031000
+// Peripheral clock enabling for timer and GPIO
+#define RCGC_TIMER_R *(volatile unsigned long *)0x400FE604
+#define RCGC2_GPIO_R *( volatile unsigned long *)0x400FE108
+#define CLOCK_GPIOF 0x00000020 // Port F clock co
+#define SYS_CLOCK_FREQUENCY 16000000
+// General purpose timer register definitions
+#define GPTM_CONFIG_R *( volatile long *)( TM_BASE + 0x000 )
+#define GPTM_TA_MODE_R *( volatile long *)( TM_BASE + 0x004 )
+#define GPTM_CONTROL_R *( volatile long *)( TM_BASE + 0x00C )
+#define GPTM_INT_MASK_R *( volatile long *)( TM_BASE + 0x018 )
+#define GPTM_INT_CLEAR_R *( volatile long *)( TM_BASE + 0x024 )
+#define GPTM_TA_IL_R *( volatile long *)( TM_BASE + 0x028 )
+#define GPTM_T1_MATCH_R *( volatile long *)( TM_BASE + 0x030 )
+// GPIO PF2 alternate function configuration
+#define GPIO_PORTF_AFSEL_R *(( volatile unsigned long *)0x40025420 )
+#define GPIO_PORTF_PCTL_R *(( volatile unsigned long *)0x4002552C )
+#define GPIO_PORTF_DEN_R *(( volatile unsigned long *)0x4002551C )// Timer config and mode bit field definitions
+#define TIM_16_BIT_CONFIG 0x00000004 // 16- b
+#define TIM_PERIODIC_MODE 0x00000002 // Perio
+#define TIM_A_ENABLE 0x00000001 // Timer
+#define TIM_PWM_MODE 0x0000000A // Time
+#define TIM_CAPTURE_MODE 0x00000004 // Time
+// Timer1 A reload value for 1 kHz PWM frequency
+#define TIM_A_INTERVAL 16000 // Timer rel
+// 1 kHz PWM
+// clock fre
+// 16 ,000 ,
+// = 1 kHz
+#define TIM_A_MATCH 12000 // Timer mat
+// duty cycl
+// Timer and GPIO intialization and configuration
+
+
+// Enable the clock for port F and Timer1
+RCGC2_GPIO_R |= CLOCK_GPIOF ;
+RCGC_TIMER_R |= 0x02 ;
+// Configure PortF pin 2 as Timer1 A output
+GPIO_PORTF_AFSEL_R |= 0x00000004 ;
+GPIO_PORTF_PCTL_R |= 0x00000700 ; // Configure as
+GPIO_PORTF_DEN_R |= 0x00000004 ;
+// Enable the clock for Timer 1
+GPTM_CONTROL_R &= ~( TIM_A_ENABLE ); // disable timer 1 A
+// Timer1 A configured as 16- bit timer
+GPTM_CONFIG_R |= TIM_16_BIT_CONFIG ;
+// Timer1 A in periodic timer , edge count and PWM mode
+GPTM_TA_MODE_R |= TIM_PWM_MODE ;
+GPTM_TA_MODE_R &= ~( TIM_CAPTURE_MODE );
+// Make PWM frequency 1 kHz using reload value of 16000
+GPTM_TA_IL_R = TIM_A_INTERVAL ;
+// Configure PWM duty cycle value ( should be less than 16000
+GPTM_T1_MATCH_R = TIM_A_MATCH ;
+// Enable timer1 A
+GPTM_CONTROL_R |= TIM_A_ENABLE ;
+}// Application main function
+
+
+
+
+void Timer2A_Init ( void )   //PF4
+{
+	#define TM_BASE2 0x40032000
+// Peripheral clock enabling for timer and GPIO
+#define RCGC_TIMER_R *(volatile unsigned long *)0x400FE604
+//#define RCGC2_GPIO_R *( volatile unsigned long *)0x400FE108
+//#define CLOCK_GPIOF 0x00000020 // Port F clock co
+#define SYS_CLOCK_FREQUENCY 16000000
+// General purpose timer register definitions
+#define GPTM_CONFIG_R *( volatile long *)( TM_BASE2 + 0x000 )
+#define GPTM_TA_MODE_R *( volatile long *)( TM_BASE2 + 0x004 )
+#define GPTM_CONTROL_R *( volatile long *)( TM_BASE2 + 0x00C )
+#define GPTM_INT_MASK_R *( volatile long *)( TM_BASE2 + 0x018 )
+#define GPTM_INT_CLEAR_R *( volatile long *)( TM_BASE2 + 0x024 )
+#define GPTM_TA_IL_R *( volatile long *)( TM_BASE2 + 0x028 )
+#define GPTM_T2_MATCH_R *( volatile long *)( TM_BASE2 + 0x030 )
+// GPIO PF2 alternate function configuration
+#define GPIO_PORTF_AFSEL_R *(( volatile unsigned long *)0x40025420 )
+#define GPIO_PORTF_PCTL_R *(( volatile unsigned long *)0x4002552C )
+#define GPIO_PORTF_DEN_R *(( volatile unsigned long *)0x4002551C )// Timer config and mode bit field definitions
+#define TIM_16_BIT_CONFIG 0x00000004 // 16- b
+#define TIM_PERIODIC_MODE 0x00000002 // Perio
+#define TIM_A_ENABLE 0x00000001 // Timer
+#define TIM_PWM_MODE 0x0000000A // Time
+#define TIM_CAPTURE_MODE 0x00000004 // Time
+// Timer1 A reload value for 1 kHz PWM frequency
+#define TIM_A_INTERVAL 16000 // Timer rel
+// 1 kHz PWM
+// clock fre
+// 16 ,000 ,
+// = 1 kHz
+#define TIM_B_MATCH 12000    // Timer mat
+// duty cycl
+// Timer and GPIO intialization and configuration
+
+	
+// Enable the clock for port F and Timer1
+//RCGC2_GPIO_R |= CLOCK_GPIOF ;
+RCGC_TIMER_R |= 0x04 ;
+// Configure PortF pin 4 as Timer2 A output
+GPIO_PORTF_AFSEL_R |= 0x00000010 ;
+GPIO_PORTF_PCTL_R |= 0x00070000 ; // Configure as
+GPIO_PORTF_DEN_R |= 0x00000010 ;
+// Enable the clock for Timer 1
+GPTM_CONTROL_R &= ~( TIM_A_ENABLE ); // disable timer 1 A
+// Timer1 A configured as 16- bit timer
+GPTM_CONFIG_R |= TIM_16_BIT_CONFIG ;
+// Timer1 A in periodic timer , edge count and PWM mode
+GPTM_TA_MODE_R |= TIM_PWM_MODE ;
+GPTM_TA_MODE_R &= ~( TIM_CAPTURE_MODE );
+// Make PWM frequency 1 kHz using reload value of 16000
+GPTM_TA_IL_R = TIM_A_INTERVAL ;
+// Configure PWM duty cycle value ( should be less than 16000
+GPTM_T2_MATCH_R = TIM_B_MATCH ;
+// Enable timer1 A
+GPTM_CONTROL_R |= TIM_A_ENABLE ;
+}// Application main function
+
+void portb_init(void){
+#define GPIO_PORTB_DATA_R (*(( volatile unsigned long *)0x400053FC ) ) 
+#define GPIO_PORTB_DIR_R (*(( volatile unsigned long *)0x40005400 ) )
+#define GPIO_PORTB_DEN_R (*(( volatile unsigned long *)0x4000551C ) )
+	
+	RCGC2_GPIO_R |= 0x02 ;
+	GPIO_PORTB_DIR_R = 0x0;
+	GPIO_PORTB_DEN_R = 0x1F;
+}
+
+
+int __main ( void ){
+
+	int x, setvalue, error, d_error,prev_error, cum_error,motor_value,kp,ki,kd,base_value,M1,M2,max_value,min_value,map,T1assign,T2assign;
+	Timer1A_Init ();
+Timer2A_Init ();	// Initialize the t
+portb_init();
+	
+	error=0;
+	
+	max_value=1;
+	min_value=15590;
+	kp=2000;
+	kd=500; //good
+	setvalue=3;
+	base_value=12000;
+	//***MAPPING***
+while (1){
+	if(GPIO_PORTB_DATA_R == 0x11)
+{  x=3;
+}
+	
+if(GPIO_PORTB_DATA_R == 0xF)
+{  x=0;
+}
+if(GPIO_PORTB_DATA_R == 0x7)
+{  x=1;
+}
+if(GPIO_PORTB_DATA_R == 0x3)
+{  x=2;
+}
+
+if(GPIO_PORTB_DATA_R == 0x18)
+{  x=4;
+}
+if(GPIO_PORTB_DATA_R == 0x1C)
+{  x=5;
+}
+if(GPIO_PORTB_DATA_R == 0x1E)
+{  x=6;
+}
+
+error=setvalue-x;
+d_error= error-prev_error;
+//cum_error=cum_error+error;
+//motor_value=(kp*error)+(kd*d_error)+(ki*cum_error);
+motor_value=(kp*error)+(kd*d_error);
+
+//map=motor_value*100;
+//GPTM_T2_MATCH_R=(base_value+map); //Left tyre MAX KP CAN BE 80.
+//GPTM_T1_MATCH_R=(base_value-map);		//Right tyre
+
+T2assign=base_value+motor_value;
+T1assign=base_value-motor_value;
+
+if (T2assign>15990){
+	T2assign=15990;
+}
+if (T2assign<10){
+	T2assign=10;
+}
+if (T1assign>15990){
+	T1assign=15990;
+}
+if(T1assign<10){
+	T1assign=10;
+}
+
+
+GPTM_T2_MATCH_R=(T2assign); //Left tyre
+GPTM_T1_MATCH_R=(T1assign); //Right tyre
+
+
+prev_error=error;
+}
+}
+																																																																																																																																																																																	

@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{color}
+\pagenumbering{arabic}
+\begin{document}
+\begin{center}
+\textbf{{\huge MPS Lab Project}}\\
+\bigbreak
+\bigbreak
+\bigbreak
+\includegraphics[scale=0.7]{download.png}\\
+\bigbreak
+\bigbreak
+\bigbreak
+\begin{tabular}{|l|c|c|r|}
+\hline
+\textbf {Sr.No} & \textbf Name  &\textbf{ Roll No.} \\
+\hline
+1 & Khansa Umatullah & 2017-EE-154 \\
+2 & Syeda Zainab Ali & 2017-EE-161 \\
+3 & Yasir Ali Khan & 2017-EE-182 \\
+4 & Anas Ali & 2017-EE-193\\
+\hline
+\end{tabular}
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+Supervised By:\\
+\textbf{
+Sir Ali Shafique\\
+Sir Umer Shahid}
+
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+Fall 2019\\
+Electrical Department\\
+University of Engineering and Technology, Lahore\\
+\end{center}
+
+\newpage
+\section{List Of Components}
+\begin{enumerate}
+\item DC Motors
+\item H-Bridge L298N
+\item 12V Rechargeable Battery with holder
+\item 5 IR Sensor Array
+\item LM7805 and LM7812 voltage regulators
+\item Block Connectors
+\item Veroboard Breadboard Style
+\item 2 Wheel Smart Robot Car Chassis Kit
+\item Jumper Wires
+\item Male and Female Header
+\end{enumerate}
+\bigbreak
+
+\newpage
+\section{Abstract}
+Line Following is one of the most important aspects of robotics. A Line Following Robot is an
+autonomous robot which is able to follow a black line that is drawn on the surface consisting of a
+contrasting color. It is designed to move automatically and follow the line. The robot uses arrays
+of optical sensors to identify the line, thus assisting the robot to stay on the track. The array of
+five sensors makes its movement precise and flexible. The robot is driven by DC gear motors to
+control the movement of the wheels. The Micro-controller TIVA Board (Cortex M-4
+TM4C1233H6PM) interface will be used to perform and implement algorithms to control the
+speed of the motors, steering the robot to travel along the line smoothly. This project aims to
+implement the algorithm and control the movement of the robot by proper tuning of the control
+parameters using PID controller and thus achieve better performance.
+
+\newpage
+\section{Acknowledgement}
+We wish to express our profound and deep sense of gratitude to Sir Ali Shafique and Sir Umer Shahid, Project Co-ordinator,Department of Electrical Engineering for sparing their valuable time to extend help in every step of our project work. We whole heartedly express our thanks to both teachers for sparing time to go through every tiny detail and give their valuable suggestions to make this project and report a success. We are mainly indebted to the authors of many references and articles which were used to understand and build concepts. Last but not the least we would like to thank our friends for their help in every  way for the success of this project.
+\newpage
+\section{Details Of Components}
+\subsection{DC Motors}
+A motor is an electrical machine which converts electrical energy into mechanical energy.
+\bigbreak
+\begin{center}
+
+\bigbreak
+\includegraphics[scale=0.4]{DC.jpg}\\
+\bigbreak
+
+\end{center}
+\bigbreak
+\subsection{H-Bridge L298N}
+Utilizing L298N as the control chip,the module has such qualities as solid
+driving ability,low calorific esteem and solid hostile to impedance capacity.
+This module can utilize worked in 78M05 for electric work by means of a
+driving force supply part. Be that as it may, to stay away from the harm of
+the voltage balancing out chip, please utilize an outer 5V rationale supply
+when utilizing in excess of 12V driving voltage. Utilizing vast limit channel
+capacitor, this module can take after current to secure diodes,and enhance
+the unwavering quality. L298N Double H Bridge Motor Driver Module:Refer
+figure ?? Control chip: L298N
+Logical voltage: 5V
+Drive voltage: 5V - 35V
+Logical current: 0mA - 36mA
+Drive current: 2A(MAX single bridge)
+Storage temperature: -20C to +135C
+Max power: 25W
+Size: 43 x 43 x 27mm
+\begin{center}
+\bigbreak
+\includegraphics[scale=0.6]{H.jpg}\\
+\bigbreak
+\end{center}
+
+\subsection{5 IR Sensor Array}
+This is a Five IR Sensor Exhibit with Obstacle and Knock Sensor. A 5
+IR sensor use with TCRT5000 have a conservative development where the
+producing light source and the locator are masterminded a similar way to
+detect the nearness of a question by utilizing the intelligent IR-beam from
+the object.The working wavelength is 5 cm. The identifier comprises of a
+phototransistor. Refer figure ?? Input voltage: 5V DC VCC, GND Pins.
+Output: 5 from TCRT5000 is S1, S2, S3, S4, S5 digital.
+Output: 1 from Bump switch is CLP digital.
+Output: 1 from IR Obstacle sensor Near digital.
+\begin{center}
+\bigbreak
+\includegraphics[scale=0.6]{IR.jpg}\\
+\bigbreak
+\end{center}
+
+\subsection{2 Wheel Smart Robot Car Chassis Kit}
+Using this 2 wheeled circular chassis it is easy to turn and allows an efficient motion in the robotic
+body.With good stability, strong smart and compact design you can customized your robots and conduct
+robotics workshops using the 2 wheel circular robotic chassis body.
+
+\begin{center}
+\bigbreak
+\includegraphics[scale=0.6]{Chase.jpg}\\
+\bigbreak
+\end{center}
+\newpage
+\section{Price Of Components}
+\begin{tabular}{|l|c|c|c|r|}
+\hline
+\textbf {Sr.No} & \textbf Component &\textbf Quantity  &\textbf{ Price} \\
+\hline
+1 & LM7805 & 1 & 8 \\
+2 & LM7812 & 1 & 8 \\
+3 & Line Tracker & 1 & 450 \\
+4 & Block Connector & 2 & 10 \\
+5 & TP4056 & 2 & 60 \\
+6 & H bridge L298 & 1 & 200 \\
+7 & Header & 1 & 10 \\
+8 & 8056 Cell & 6 & 1020 \\
+9 & Robot Chassis & 1 & 560\\
+\hline
+\end{tabular}
+
+\bigbreak
+\section{Working Principle}
+The line following robot is one of the self-operating robots. That detects and follows a line drawn on the area. The line is indicated by black line on a white surface. This system must be sense by the line. This application is depends upon the sensors. Here we are using an array of five sensors for path detection purpose. That is proximity sensor and IR sensor. The proximity sensor used for path detection and IR sensor used for obstacle detection. These sensors mounted at front end of the robot. The micro controller is an intelligent device the whole circuit is controlled by the micro controller.
+\includegraphics[scale=.8]{Capture.png}\\
+
+The IR LED on getting proper biasing emits Infra red light. This IR light is reflected in case of a white surface and the reflected IR light is incident on the photo-diode. The resistance of the photo-diode decreases, which leads to an increase in current through it and thus the voltage drop across it. The photodiode is connected to the base of the transistor and as a result of increased voltage across the photodiode, the transistor starts conducting and thus the motor connected to the collector of the transistor gets enough supply to start rotating. In case of a black color on the path encountered by one of the sensor arrangement, the IR light is not reflected and the photo-diode offers more resistance, causing the transistor to stop conduction and eventually the motor stops rotating.
+
+\bigbreak
+
+\section{Applications of Line Follower Robot}
+\textbf{
+Industrial Applications:}These robots can be used as automated equipment carriers in industries replacing traditional conveyer belts.\\
+\textbf{
+Automobile Applications:}These robots can also be used as automatic cars running on roads with embedded magnets.\\
+\textbf{
+Domestic Applications:}These can also be used at homes for domestic purposes like floor cleaning etc.\\
+\textbf{
+Guidance Applications:}These can be used in public places like shopping malls, museums etc to provide path guidance.\\
+
+\section{Result and Analysis}
+\textbf{
+Speed Control(PWM):}
+The speed of the dc motor is control by feeding PWM from Tiva to the enable pin of the L293D which change the voltage across the motor. Due to which speed is also decreased. On the command over the speed and the direction is also controlled. 
+\begin{center}
+\bigbreak
+\includegraphics[scale=0.6]{PWM.png}\\
+\end{center}
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+\bigbreak
+
+We created PWM using the two timers(tim0,tim1) of Tiva. For the protection of Tiva board we are using opto-couplers. PWM first goes to opto-couplers and then to the motor driver.\\
+
+Using different conditions depending on the position of Array sensor, we use different duty cycles of PWM. As a result of different duty cycles, the line follower is able to follow a black line.
+\bigbreak
+\textbf{
+Practical Result Analysis:}
+\begin{center}
+\begin{tabular}{|l|c|c|r|}
+\hline
+\textbf {Duty Cycle} & \textbf Voltage Across Motor  &\textbf{RPM} \\
+\hline
+0 & 0 & 0 \\
+25 & 3 & 16 \\
+50 & 6 & 29 \\
+75 & 9 & 45\\
+100 & 12 & 58\\
+\hline
+\end{tabular}
+\bigbreak
+\end{center}
+The above table shows the voltage across motor and RPM at different values of duty cycle. As we increase duty cycle the voltage across motor increase accordingly, so is the RPM.
+\newpage
+\section{Conclusion}
+The line following robot is automobile system that has ability to recognize it's path , move and change the robot's position toward the line in the best way to remain in track. This project report presents a photodiode sensor based line follower robot design, which always directs along the black line on white surface. The robot is able to detect it’s path in case it is out of path.\\ 
+The line following robot project  challenged the  group to cooperate, communicate,  and expand  understanding  of  electronics,  mechanical  systems,  and  their  integration  with programming.  The successful  completion  of every task  demonstrated  the potential  of mechatronic systems and a positive group dynamic. 
+
+\end{document}
